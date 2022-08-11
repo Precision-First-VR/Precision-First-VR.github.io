@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex" />
+
+        <title>ISMAR 5988 Dataset</title>
+        <link rel="stylesheet" href="./main.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-2.9.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="papaparse.min.js"></script>
+        <script src="./scripts.js"></script>
+
+        <meta name="robots" content="noindex">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DL57SXR4D"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-6DL57SXR4D');
+        </script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand mx-4" href="#">ISMAR 5988 Dataset</a>
+
+            <button class="navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Dataset Preview</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="https://imwut9649.anonymitysubmission.com/download/dataset.tar.gz">Download</a>
+                  </li>
+                </ul>
+              </div>
+            
+        </nav>
+        
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h1 class="my-2">Abstract</h1>
+                    <p class="lead my-2">
+                        Accurately drawing non–planar 3D curves in immersive Virtual Reality (VR) is indispensable for many precise 3D tasks like surgical telestration, medical contouring, and automotive design. However, due to lack of physical support, limited depth perception, and the non–planar nature of 3D curves, it is challenging to adjust mid–air strokes to achieve high precision. We quantitatively and qualitatively investigated how task geometric shapes and input modalities affect precision–first drawing performance in a within–subject study (n = 12) focusing on 3D target tracing in commercially available VR systems. We found that compared to using bare hands, VR controllers and pens yield nearly 30% of precision gain, and that the tasks with large curvature, forward–backward or left–right orientations perform best. To better exploit these findings, we discussed opportunities for designing novel interaction techniques for precise 3D drawing. We believe that our work will benefit future practitioners and researchers who aim to create usable drawing toolboxes that offer dedicated features for designers and domain experts engaging in precise 3D drawing.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="row">
+                    <h1 class="my-2">Dataset</h1>
+
+                    <!-- introductions of the dataset -->
+                    <p class="lead my-2">
+                        To encourage future research, we have made our dataset publicly available. Although the focus
+                        of this work lies on the analysis of spatial and temporal features of the drawn traces, we
+                        also record participants participant’s drawing behaviors. This unlocks future investigations
+                        for analyzing precision–first 3D drawing from the perspective of participants’ drawing behaviors.
+                        Example key research questions include:
+                        <i>how do participants explore and observe during precision–first 3D drawing?</i>
+                        and <i>how do participants hold the tools? etc.</i>
+                        This is one–step beyond the current method of analysis that only focuses on the temporal and spatial features of what participant drew.
+                    </p>
+
+                    <p class="lead my-2">
+                        Our dataset could be accessed from <a
+                            href="https://imwut9649.anonymitysubmission.com/download/dataset.tar.gz">here</a>
+                        (Updated on 6/3/2022).
+                    </p>
+
+                    <p class="lead my-2">
+                        Our manuscript could be accessed from <a
+                            href="javascript:$('#notFoundPrompt').modal('show')">here</a> (<mark>Not available
+                        due to under review status.</mark>).
+                    </p>
+
+                    <!-- data format -->
+                    <p class="lead my-2">
+                        Our precision-first 3D drawing dataset consists of 12 participants' drawing performance with
+                        VR Controllers, Stylus Pen, Hand Point and Pinching.
+                    </p>
+
+                    <figure class="figure">
+                        <img src="assets/inputs.png" class="figure-img img-fluid rounded" width="960" height="146",
+                             alt=" We consider four input methods. (a – d) The tool-based and hand-based gestures in real world. (e – h) The photo-realistic prefabs that participants saw in the VR scene (the blue curves are drawn by the participants).">
+                        <figcaption class="figure-caption">
+                            We consider four input methods.
+                            (a – d) The tool-based and hand-based gestures in real world.
+                            (e – h) The photo-realistic prefabs that participants saw in the VR scene (the blue
+                            curves are drawn by the participants).
+                        </figcaption>
+                    </figure>
+
+                    <p class="lead my-2">
+                        Each files are named in following format:
+                    </p>
+                    <code>
+                        [Type]_[Tool]_[Curvature]_[Slope]_[Orientation].csv
+                    </code>
+
+                    <p class="lead my-2">
+                        <code>[Type]</code> could be either <code>sketch</code> or <code>task</code>, where <code>
+                        sketch</code> refers to the traces drawn by participants and <code>task</code> refers to the
+                        target which participants were expected to follow, with each lines containing <code>x</code>,
+                        <code>y</code>, <code>z</code> coordinates in the world space.
+                    </p>
+
+                    <p class="lead my-2">
+                        <code>sketch_controller_[curvature]_[slope]_[orientation].csv</code> contains the
+                        participants' sketch data while using Vive Controller. Each line of the csv file contains
+                        following information:
+                    </p>
+
+                    <ul>
+                        <li><code>[timestamp]</code>: timestamp in ms;</li>
+                        <li><code>[controller_position]</code>: the position of controller in the world space;</li>
+                        <li><code>[controller_right]</code>: the right direction of controller in the world space;</li>
+                        <li><code>[controller_up]</code>: the up direction of controller in the world space;</li>
+                        <li><code>[controller_forward]</code>: the forward direction of controller in the world
+                            space;</li>
+                        <li><code>[headset_position]</code>: the position of headset in the world space;</li>
+                        <li><code>[headset_right]</code>: the right direction of headset in the world space;</li>
+                        <li><code>[headset_up]</code>: the up direction of headset in the world space;</li>
+                        <li><code>[headset_forward]</code>: the forward direction of headset in the world space;</li>
+                        <li><code>[drawing_trigger]</code>: whether the drawing features is triggered;</li>
+                    </ul>
+
+
+
+                    <p class="lead my-2">
+                        <code>sketch_pen_[curvature]_[slope]_[orientation].csv</code> contains the
+                        participants' sketch data while using Logitech VR Stylus. Each line of the csv file contains
+                        following information:
+                    </p>
+
+                    <!-- pen -->
+                     <ul>
+                        <li><code>[timestamp]</code>: timestamp in ms;</li>
+                        <li><code>[pen_position]</code>: the position of the pen in the world space;</li>
+                        <li><code>[pen_right]</code>: the right direction of the pen in the world space;</li>
+                        <li><code>[pen_up]</code>: the up direction of the pen in the world space;</li>
+                        <li><code>[pen_forward]</code>: the forward direction of the pen in the world space;</li>
+                        <li><code>[headset_position]</code>: the position of the headset in the world space;</li>
+                        <li><code>[headset_right]</code>: the right direction of headset in the world space;</li>
+                        <li><code>[headset_up]</code>: the up direction of headset in the world space;</li>
+                        <li><code>[headset_forward]</code>: the forward direction of headset in the world space;</li>
+                        <li><code>[drawing_trigger]</code>: whether the drawing features is triggered;</li>
+                    </ul>
+
+                     <p class="lead my-2">
+                        <code>sketch_handpoint_[curvature]_[slope]_[orientation].csv</code> contains the
+                        participants' sketch data while using hand pointing gesture. Each line of the csv file
+                         contains following information:
+                     </p>
+
+                    <!-- hand point -->
+                     <ul>
+                        <li><code>[timestamp]</code>: timestamp in ms;</li>
+                        <li><code>[stroke_position]</code>: the position of the stroke in the world space;</li>
+                        <li><code>[hand_right]</code>: the right direction of the hand in the world space;</li>
+                        <li><code>[hand_up]</code>: the up direction of the hand in the world space;</li>
+                        <li><code>[hand_forward]</code>: the forward direction of the hand in the world space;</li>
+                        <li><code>[headset_position]</code>: the position of the headset in the world space;</li>
+                        <li><code>[headset_right]</code>: the right direction of headset in the world space;</li>
+                        <li><code>[headset_up]</code>: the up direction of headset in the world space;</li>
+                        <li><code>[headset_forward]</code>: the forward direction of headset in the world space;</li>
+                        <li><code>[drawing_trigger]</code>: whether the drawing features is triggered;</li>
+                    </ul>
+
+                     <p class="lead my-2">
+                        <code>sketch_handpinch_[curvature]_[slope]_[orientation].csv</code> contains the
+                        participants' sketch data while using hand pinching gesture. Each line of the csv file
+                         contains following information:
+                     </p>
+
+                    <!-- hand pinch -->
+                     <ul>
+                        <li><code>[timestamp]</code>: timestamp in ms;</li>
+                        <li><code>[stroke_position]</code>: the position of the stroke in the world space;</li>
+                        <li><code>[hand_right]</code>: the right direction of the hand in the world space;</li>
+                        <li><code>[hand_up]</code>: the up direction of the hand in the world space;</li>
+                        <li><code>[hand_forward]</code>: the forward direction of the hand in the world space;</li>
+                        <li><code>[headset_position]</code>: the position of the headset in the world space;</li>
+                        <li><code>[headset_right]</code>: the right direction of headset in the world space;</li>
+                        <li><code>[headset_up]</code>: the up direction of headset in the world space;</li>
+                        <li><code>[headset_forward]</code>: the forward direction of headset in the world space;</li>
+                        <li><code>[drawing_trigger]</code>: whether the drawing features is triggered;</li>
+                    </ul>
+
+                </div>
+
+            <div class="row">
+                <div>
+                    <h1 class="my-2">Citation</h1>
+                    <p class="lead my-2">If you are using this dataset, please cite our work! Thank you!</p>
+
+                    <p class="lead my-2">
+                        <mark> Due to the status of under review, the BibTex of current citation is not finalized.
+                            Please contact the authors for more detail.</mark></p>
+
+                    <p class="lead my-2"><small>
+                        @article{ismar5988,
+                            <br>&nbsp;&nbsp; author = {Anonymous Author of Submission 5988},
+                            <br>&nbsp;&nbsp; title = {Investigating Impacts of Input Modality and Task Geometry for
+                        Precision–First 3D Drawing in Virtual Reality},
+                            <br>&nbsp;&nbsp; booktitle = {2022 IEEE International Symposium on Mixed and Augmented Reality (ISMAR)},
+                            <br>&nbsp;&nbsp; publisher = {IEEE Computer Society},
+                            <br>&nbsp;&nbsp; address = {Los Alamitos, CA, USA},
+                            <br>&nbsp;&nbsp; year = {2022},
+                            <br>&nbsp;&nbsp; url = {TBC}
+                        <br>}
+                    </small></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div>
+                    <h1 class="my-2">Disclaimer</h1>
+                    <p class="lead my-2">
+                        This work has been approved by the Institutional Review Boards (IRB). We have removed all
+                        Personal Identifiable Information (PII) to protect participants' privacy. <i class="fa fa-shield"></i>
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- to remove upon final publications -->
+            <div class="modal fade", id="notFoundPrompt">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title"><i class='fa fa-exclamation-triangle'></i> Sorry!</h5>
+                        </div>
+
+                        <div class="modal-body">
+                            <p class="lead my-2">This work is currently <u>under review</u>.</p>
+
+                            <p class="lead my-2">The content you requested is not available!</p>
+
+                            <p class="lead my-2">Thank you!</p>
+
+                            <p class="lead my-2">Contact: Anonymous Authors of ISMAR Submission 5988.</p>
+
+                            <div class="my-2 d-grid gap-2 d-md-flex justify-content-md-end">
+                                <input class="btn btn-primary btn-dark px-2" type="submit" value="OK" data-bs-dismiss="modal">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- navigation bar at the bottom -->
+        <div class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container">
+                <p class="navbar-text">© Anonymous Authors of ISMAR 5988 Submissions, Updated on June 3, 2022</p>
+            </div>
+        </div>
+
+    </body>
+</html>

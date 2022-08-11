@@ -1,1 +1,268 @@
-tesst
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex" />
+
+        <title>ISMAR 5988 Dataset</title>
+
+        <link rel="stylesheet" href="./main.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-2.9.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="papaparse.min.js"></script>
+        <script src="./scripts.js"></script>
+
+        <meta name="robots" content="noindex">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DL57SXR4D"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-6DL57SXR4D');
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $("#prePublicationInfo").modal("show")
+            });
+        </script>
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand mx-4" href="#">ISMAR 5988 Dataset</a>
+
+            <button class="navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="./about.html">About</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="https://imwut9649.anonymitysubmission.com/download/dataset.tar.gz">Download</a>
+                  </li>
+
+                  <!-- how to add a sketch -->
+                  <li class="nav-item">
+                    <button type="button" class="btn btn-light mx-2" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                        Add Sketch
+                    </button>
+                  </li>
+
+                  <li class="nav-item">
+                    <button type="button" class="btn btn-light mx-2" onclick="clearAllGraphs()">
+                        Clear All
+                    </button>
+                  </li>
+
+                  <li class="nav-item">
+                    <button type="button" class="btn btn-light mx-2" data-bs-toggle="modal" data-bs-target="#scaleModal">
+                        Adjust Color Scale
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            
+        </nav>
+
+        <!-- to remove upon final publications -->
+        <div class="modal fade", id="prePublicationInfo">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class='fa fa-exclamation-triangle'></i> Information</h5>
+                    </div>
+
+                    <div class="modal-body">
+                        <p class="lead my-2">This work is currently <mark><u>UNDER REVIEW</u></mark>. To obey
+                            anonymous
+                            review policy, we used a
+                            temporal
+                            anonymous domain name for hosting this site. Upon final publication, the site would be
+                            transferred to a permanent server.</p>
+
+                        <p class="lead my-2"><i class='fa fa-exclamation-triangle'></i> During the current "under review" status, please
+                            also <mark><u>DO NOT</u></mark> distrubute and publicize this work and any companion
+                            materials/dataset!</p>
+
+                        <p>Thank you!</p>
+
+                        <p class="lead my-2">Contact: Anonymous Authors of ISMAR Submission 5988.</p>
+
+                        <div class="my-2 d-grid gap-2 d-md-flex justify-content-md-end">
+                            <input class="btn btn-primary btn-dark px-2" id="okBut" type="submit" value="OK"
+                                   data-bs-dismiss="modal" onkeypress="$('#prePublicationInfo').modal('hide')">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="scaleModal" tabindex="-1" role="dialog" aria-labelledby="scaleTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="scaleTitle">Adjust Color Scale Thresholds</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="handleScaleUpdate();return false" id="scaleForm">
+                            
+                            <div class="form-group">
+                                <label for="lower-bound">Lower Bound of Instantaneous Speed (m/s):</label>
+                                <input type="number" step="0.01" class="form-control" name="lower-bound"></input>
+                            </div>
+                            <div class="form-group">
+                                <label for="upper-bound">Upper Bound of Instantaneous Speed (m/s):</label>
+                                <input type="number" step="0.01" class="form-control" name="upper-bound"></input>
+                            </div>
+                            <div class="my-2 d-grid gap-2 d-md-flex justify-content-md-end">
+                                <input class="btn btn-primary btn-dark px-2" type="submit" value="Apply" data-bs-dismiss="modal">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Add Sketch</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="handleSubmit();return false" id="selection">
+                            <div class="form-group">
+                                <label for="participant-id">Participant:</label>
+                                <select class="form-select" name="participant-id">
+                                    <option value="p1">Participant 1</option>
+                                    <option value="p2">Participant 2</option>
+                                    <option value="p3">Participant 3</option>
+                                    <option value="p4">Participant 4</option>
+                                    <option value="p5">Participant 5</option>
+                                    <option value="p6">Participant 6</option>
+                                    <option value="p7">Participant 7</option>
+                                    <option value="p8">Participant 8</option>
+                                    <option value="p9">Participant 9</option>
+                                    <option value="p10">Participant 10</option>
+                                    <option value="p11">Participant 11</option>
+                                    <option value="p12">Participant 12</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-method">Input Method:</label>
+                                <select class="form-select" name="input-method">
+                                    <option value="controller">VR Controller</option>
+                                    <option value="handpinch">Hand Pinch</option>
+                                    <option value="handpoint">Hand Point</option>
+                                    <option value="pen">VR Pen</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="curvature">Curvature:</label>
+                                <select class="form-select" name="curvature">
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="slope-choice">Slope:</label>
+                                <select class="form-select" name="slope-choice">
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="orientation">Orientation:</label>
+                                <select class="form-select" name="orientation">
+                                    <option value="Forward Backward">Forward Backward</option>
+                                    <option value="Left Right">Left Right</option>
+                                    <option value="Up Down">Up Down</option>
+                                </select>
+                            </div>
+                            <div class="my-2 d-grid gap-2 d-md-flex justify-content-md-end">
+                                <input class="btn btn-primary btn-dark px-2" type="submit" value="Add" data-bs-dismiss="modal">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- landing page doc -->
+        <div class="container">
+            <div class="row">
+                <h1 id="instruction-header" class="my-2"><i class="fa fa-rocket"></i><i class="fa fa-rocket"></i><i class="fa fa-rocket"></i> Getting Started</h1>
+                <div id="instructions">
+                    <p class="lead my-2">
+                        We have built a web based application for visualizing our dataset. The navigation bar includes 3
+                        main features.
+                    </p>
+
+                    <ul>
+                        <li>
+                            <b>Add Sketch</b> allows a new trial to be added. Parameters,
+                            including Participants, Curvature, Slope and Orientation need to be set before adding a new trial.
+                        </li>
+
+                        <li><b>Clear All</b> will remove all trials in the workspace.</li>
+
+                        <li><b>Adjust Color Scale</b> change the upper and lower bounds of the color scale.</li>
+                    </ul>
+
+                    <p class="lead my-2">
+
+                        Upon adding a trial, the target trace (indicated by the black) and the participants' drawn
+                        traces would be visualized. We also visualized the <u>instantaneous stroke speed</u> drawn by
+                        participants as the color of the trace. The unit of instantaneous stroke speed is <code>m/s</code>.
+
+                    </p>
+
+                    <p class="lead my-2">
+                        Please refer to <a href="./about.html">About</a> for more information.
+                    </p>
+
+                    <p class="lead my-2">
+                        As an example, Participant 1's drawing with 4 different tools, and with large curvature, large slope as well as left-right orientation are pre-loaded.
+                    </p> 
+
+                </div>
+            </div>
+
+            <!-- placeholders for all graphs -->
+            <div class="row" id="allGraphs"></div>
+        </div>
+
+            <!-- navigation bar at the bottom -->
+        <div class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container">
+                <p class="navbar-text">© Anonymous Authors of ISMAR 5988 Submissions, Updated on June 3, 2022</p>
+            </div>
+        </div>
+
+    </body>
+</html>
