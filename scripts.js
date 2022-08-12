@@ -1,5 +1,5 @@
 const PROTOCOL = "HTTPS";
-const HOST = "ismar5988.anonymitysubmission.com";
+const HOST = "raw.githubusercontent.com/Precision-First-VR/Precision-First-VR.github.io/main";
 const AUTH_STR = "Basic Z3Vlc3Q6NTk4OA==";
 
 var currentCMIN = 0;
@@ -42,7 +42,7 @@ const handleSubmit = (event) => {
     let sketchUrl = baseUrl + participant + '/' + 'sketch_' + inputMethod + '_' + curvature + '_' + slope + '_' + orientation + '.csv';
 
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", AUTH_STR);
+    //myHeaders.append("Authorization", AUTH_STR);
     
     var requestOptions = {
       method: 'GET',
@@ -204,8 +204,13 @@ const initialGraphs = () => {
       headers: myHeaders,
       redirect: 'follow'
     };
-    initialSketchURLS = ['https://ismar5988.anonymitysubmission.com/dataset/p1/sketch_controller_large_large_Left Right.csv', 'https://ismar5988.anonymitysubmission.com/dataset/p1/sketch_handpinch_large_large_Left Right.csv', 'https://ismar5988.anonymitysubmission.com/dataset/p1/sketch_handpoint_large_large_Left Right.csv', 'https://ismar5988.anonymitysubmission.com/dataset/p1/sketch_pen_large_large_Left Right.csv']
-    initialTaskURLS = ['https://ismar5988.anonymitysubmission.com/dataset/p1/task_controller_large_large_Left Right.csv', 'https://ismar5988.anonymitysubmission.com/dataset/p1/task_handpinch_large_large_Left Right.csv', 'https://ismar5988.anonymitysubmission.com/dataset/p1/task_handpoint_large_large_Left Right.csv', 'https://ismar5988.anonymitysubmission.com/dataset/p1/task_pen_large_large_Left Right.csv'];
+    initialSketchURLS = [
+        'https://raw.githubusercontent.com/Precision-First-VR/Precision-First-VR.github.io/main/dataset/p1/sketch_controller_large_large_Left%20Right.csv',
+        'https://raw.githubusercontent.com/Precision-First-VR/Precision-First-VR.github.io/main/dataset/p1/sketch_handpinch_large_large_Left%20Right.csv',
+        'https://raw.githubusercontent.com/Precision-First-VR/Precision-First-VR.github.io/main/dataset/p1/sketch_handpoint_large_large_Left%20Right.csv',
+        'https://raw.githubusercontent.com/Precision-First-VR/Precision-First-VR.github.io/main/dataset/p1/sketch_pen_large_large_Left%20Right.csv']
+    initialTaskURLS = [
+        'https://raw.githubusercontent.com/Precision-First-VR/Precision-First-VR.github.io/main/dataset/p1/task_controller_large_large_Left%20Right.csv', 'https://raw.githubusercontent.com/Precision-First-VR/Precision-First-VR.github.io/main/dataset/p1/task_handpinch_large_large_Left%20Right.csv', 'https://raw.githubusercontent.com/Precision-First-VR/Precision-First-VR.github.io/main/dataset/p1/task_handpoint_large_large_Left%20Right.csv', 'https://raw.githubusercontent.com/Precision-First-VR/Precision-First-VR.github.io/main/dataset/p1/task_pen_large_large_Left%20Right.csv'];
     initialInputs = ['controller', 'handpinch', 'handpoint', 'pen'];
     
     for (let initialGNum = 0; initialGNum < 4; initialGNum++){
