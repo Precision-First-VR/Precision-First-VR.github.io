@@ -1,6 +1,6 @@
 const PROTOCOL = "HTTPS";
 const HOST = "raw.githubusercontent.com/Precision-First-VR/Precision-First-VR.github.io/main";
-const AUTH_STR = "Basic Z3Vlc3Q6NTk4OA==";
+//const AUTH_STR = "Basic Z3Vlc3Q6NTk4OA==";
 
 var currentCMIN = 0;
 var currentCMAX = 0.2;
