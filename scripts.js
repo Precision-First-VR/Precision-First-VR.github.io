@@ -197,7 +197,7 @@ const clearAllGraphs = () => {
 
 const initialGraphs = () => {
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", AUTH_STR);
+    //myHeaders.append("Authorization", AUTH_STR);
     
     var requestOptions = {
       method: 'GET',
