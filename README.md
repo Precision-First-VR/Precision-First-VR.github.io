@@ -1,6 +1,6 @@
 # Precision-First VR: Investigating Input Modality and Task Geometry on Precision–first 3D Drawing in Virtual Reality
 
-📘 [our paper](#) &emsp;
+📘 [our paper](https://ieeexplore.ieee.org/document/9995686) &emsp;
 🎬 [video presentation](#) &emsp;
 🌐 [lab website](https://hxi.ucsd.edu)
 
@@ -41,6 +41,7 @@ booktitle = {2022 IEEE International Symposium on Mixed and Augmented Reality (I
 publisher = {IEEE Computer Society},
 address = {Los Alamitos, CA, USA},
 year = {2022},
-url = {TBC}
+doi = {10.1109/ISMAR55827.2022.00054}
+url = {https://doi.org/10.1109/ISMAR55827.2022.00054}
 }
 ```
