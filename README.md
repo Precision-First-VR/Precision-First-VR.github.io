@@ -34,7 +34,7 @@ A more detailed description of the dataset along with the dataset itself can be 
 If you are using this dataset, please cite our work! Thank you!
 
 ```
-@article{ismar5988,
+@article{10.1109/ISMAR55827.2022.00054,
 author = {Chen, Chen and Yarmand, Matin and Xu, Zhuoqun and Singh, Varun and Zhang, Yang and Weibel, Nadir},
 title = {Investigating Impacts of Input Modality and Task Geometry for Precision-First 3D Drawing in Virtual Reality},
 booktitle = {2022 IEEE International Symposium on Mixed and Augmented Reality (ISMAR)},
